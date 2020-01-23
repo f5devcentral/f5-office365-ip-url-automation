@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-This Python script will perform REST API calls to the Office 365 IP Address and URL web service (https://docs.microsoft.com/en-us/Office365/Enterprise/office-365-ip-web-service) and create Data-Groups and/or Custom URL Category.
+This Python script will perform REST API calls to the Office 365 IP Address and URL web service (https://docs.microsoft.com/en-us/Office365/Enterprise/office-365-ip-web-service) and creates Data-Groups and/or Custom URL Category.
 
 Up to three Data-Groups are created, based on the configurable options. A Data-Group can be created for:
 - IPv4 Addresses
