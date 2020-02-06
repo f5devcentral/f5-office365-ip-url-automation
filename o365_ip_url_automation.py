@@ -253,7 +253,7 @@ def main():
             or (care_skype and service_area == "Skype") \
             or (care_yammer and service_area == "Yammer"):
 
-            if use_url:
+            if use_url or use_url_dg:
                 # Append "urls" if existent in each record
                 if dict_o365_record.has_key('urls'):
                     list_urls = list(dict_o365_record['urls'])
