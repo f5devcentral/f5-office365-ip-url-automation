@@ -28,9 +28,9 @@ Run the script for the first time and verify it's working correctly by monitorin
 
 Use iCall to run once a day or as desired.
 
-`tmsh create sys icall script o365_update_script definition { catch { exec /bin/python /shared/scripts/o365_ip_url_automation.py } }
-tmsh create sys icall handler periodic o365_update_handler script o365_update_script interval 86400
-tmsh save sys config`
+`tmsh create sys icall script o365_update_script definition { catch { exec /bin/python /shared/scripts/o365_ip_url_automation.py } }`
+`tmsh create sys icall handler periodic o365_update_handler script o365_update_script interval 86400`
+`tmsh save sys config`
 
 ## Screenshots
 ### External Data-group with URLs:
