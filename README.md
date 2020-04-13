@@ -26,9 +26,11 @@ Edit the script and change the configurable options to suit your setup. Note: `h
 
 Run the script for the first time and verify it's working correctly by monitoring the log file `/var/log/o365_update`. You may need to change the log level.
 
-Add a cron entry to run once a day or as desired.
+Use iCall to run once a day or as desired.
 
-`0 3 * * * /bin/python /shared/scripts/o365_ip_url_automation.py >/dev/null 2>&1`
+`tmsh create sys icall script o365_update_script definition { catch { exec /bin/python /shared/scripts/o365_ip_url_automation.py } }
+tmsh create sys icall handler periodic o365_update_handler script o365_update_script interval 86400
+tmsh save sys config`
 
 ## Screenshots
 ### External Data-group with URLs:
