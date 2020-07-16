@@ -315,7 +315,7 @@ def main():
             url = url.lower()
 
             # If URL starts with an asterisk, set as a glob-match URL, otherwise exact-match. Send to a string.
-            if url.startswith('*'):
+            if "*" in url:
                 log(2, "Creating glob-match entries for: " + url)
                 # Escaping any asterisk characters
                 url_processed = re.sub('\*', '\\\\\*', url)
@@ -328,6 +328,7 @@ def main():
 
         # Import the URL entries
         result = commands.getoutput("tmsh modify /sys url-db url-category " + o365_categories + str_urls_to_bypass)
+        log(2, "URL DB update result: " + result)
 
     # -----------------------------------------------------------------------
     # O365 endpoints URL asterisk removal and re-format to fit into Data Group
