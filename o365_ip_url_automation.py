@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 # Office 365 IP Address and URL Web Service Automation for BIG-IP
 # https://docs.microsoft.com/en-us/Office365/Enterprise/office-365-ip-web-service
-# Version: 1.06
-# Last Modified: 4th December 2019
+# Version: 1.07
+# Last Modified: 16th July 2020
 # Original author: Makoto Omura, F5 Networks Japan G.K.
 #
 # v1.05: Updated for SSL Orchestrator by Kevin Stewart, SSA, F5 Networks
 # v1.06: Updated by Brett Smith, Principal Systems Engineer
 # v1.06: Ability to create data groups and/or URL categories. IPv4/IPv6 data group support only.
+# v1.07: Updated to properly pass "*" to tmsh command (by M.O. 9 July 2020)
 #
 # This Sample Software provided by the author is for illustrative
 # purposes only which provides customers with programming information
@@ -317,7 +318,7 @@ def main():
             if url.startswith('*'):
                 log(2, "Creating glob-match entries for: " + url)
                 # Escaping any asterisk characters
-                url_processed = re.sub('\*', '\\*', url)
+                url_processed = re.sub('\*', '\\\\\*', url)
                 # Both HTTPS and HTTP category lookups use "https://", with the subtle difference that the HTTP URLs match an entry with no trailing forward slash"
                 str_urls_to_bypass = str_urls_to_bypass + " urls add { \"https://" + url_processed + "/\" { type glob-match } } urls add { \"https://" + url_processed + "\" { type glob-match } }"
             else:
